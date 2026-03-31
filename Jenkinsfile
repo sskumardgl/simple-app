@@ -2,12 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone') {
-            steps {
-                git 'https://github.com/your-username/simple-app.git'
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
                 sh 'pip3 install -r requirements.txt'
