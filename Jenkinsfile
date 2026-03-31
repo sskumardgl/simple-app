@@ -4,25 +4,32 @@ pipeline {
     stages {
         stage('Install Dependencies') {
             steps {
-                sh 'pip3 install -r requirements.txt'
+                sh '''
+                python3 -m venv venv
+                . venv/bin/activate
+                pip install -r requirements.txt
+                '''
             }
         }
 
         stage('Run Tests') {
             steps {
-                sh 'python3 test_app.py'
+                sh '''
+                . venv/bin/activate
+                python3 test_app.py
+                '''
             }
         }
 
         stage('Build') {
             steps {
-                echo 'Building application...'
+                echo 'Building...'
             }
         }
 
         stage('Deploy') {
             steps {
-                echo 'Deploying application...'
+                echo 'Deploying...'
             }
         }
     }
