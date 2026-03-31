@@ -4,6 +4,7 @@ pipeline {
     stages {
         stage('Install Dependencies') {
             steps {
+                git credentialsId: 'github', url: 'https://github.com/sskumardgl/simple-app.git'
                 sh 'pip3 install -r requirements.txt'
             }
         }
